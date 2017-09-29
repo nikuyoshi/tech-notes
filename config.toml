@@ -2,7 +2,7 @@ baseURL = "/"
 languageCode = "ja-JP"
 DefaultContentLanguage = "ja"
 
-title = "Docdock"
+title = "Tech Notes"
 theme = "docdock"
 themesdir = "themes"
 
