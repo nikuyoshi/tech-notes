@@ -17,7 +17,7 @@ http://selenide.org/documentation/selenide-vs-selenium.html
 
 1. ログイン
 2. 指定した画面まで遷移
-5. 検索
+3. 検索
 
 を行っている。
 
