@@ -1,3 +1,3 @@
 +++
-title = "Agile"
+title = "アジャイル"
 +++
