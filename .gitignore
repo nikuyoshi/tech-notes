@@ -226,6 +226,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 .idea/
-# public/
-# static/
+public/
+static/
 Would skip repository themes/hugo-theme-docdock/
