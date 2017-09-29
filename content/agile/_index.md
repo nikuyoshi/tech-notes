@@ -1,3 +1,4 @@
 +++
 title = "アジャイル"
+alwaysopen = true
 +++

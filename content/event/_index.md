@@ -1,3 +1,4 @@
 +++
 title = "イベント"
+alwaysopen = true
 +++

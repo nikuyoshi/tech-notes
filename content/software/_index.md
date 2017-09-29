@@ -1,3 +1,4 @@
 +++
 title = "ソフトウェア"
+alwaysopen = true
 +++

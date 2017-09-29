@@ -1,4 +1,4 @@
-# Nikuyoshi's Tech Notes
+# Tech Notes
 
 技術ナレッジを貯めるための自分用リポジトリ。(Netlifyから見てるならサイト)
 

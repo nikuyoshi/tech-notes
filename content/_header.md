@@ -1,1 +1,1 @@
-Nikuyoshi's Tech Notes
+Tech Notes

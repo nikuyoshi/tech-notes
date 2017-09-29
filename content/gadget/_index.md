@@ -1,3 +1,4 @@
 +++
 title = "ガジェット"
+alwaysopen = true
 +++
