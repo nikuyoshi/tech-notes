@@ -35,7 +35,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class Test {
     @org.junit.Test
-    public void ccmTest() {
+    public void test() {
         String baseUrl = "http://...";
         // Chrome Driverのパス
         System.setProperty("webdriver.chrome.driver", "~/chromedriver/chromedriver");
@@ -71,7 +71,19 @@ public class Test {
 
 ```
 
+## Assertのコツ
+
+ID属性やクラス等で一発で見つけられないような動的なコンポーネントをAssertする場合、上位のコンポーネントまで何かしらの方法で特定してから
+`find`すると良い。 
+
+```java
+$$(".cluster_type_name").find(text("hoge")).shouldHave(text("hoge"));
+```
+
+`$$`は複数の要素を返してくれるメソッド。 `$`はCSSセレクタで検索した後、一番最初の要素だけ返すので注意。
+
 ## 参照
 
 * [mybatis/jpetstore-6](https://github.com/mybatis/jpetstore-6/blob/master/src/test/java/org/mybatis/jpetstore/ScreenTransitionIT.java)
 * [Effective UI tests with Selenide](https://asolntsev.github.io/en/2015/12/31/selenide-at-advent-calendar/)
+* [Selenide Cheet Sheet](https://gist.github.com/mkpythonanywhereblog/947633ba1bf0bc239639)
