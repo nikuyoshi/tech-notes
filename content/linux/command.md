@@ -27,6 +27,7 @@ $ ps -eo pid,cmd,lstart
 1. `ssh-keygen`で秘密鍵を生成する
 2. `ssh-copy-id ユーザー名@IPアドレス`で秘密鍵をリモートに転送する 
 3. `ssh ユーザー名@IPアドレス`でパスワード抜きでログインできるか確認する
+4. 1-3を実施しても駄目なら`ssh-add -K /path/to/private_key` を実行する 
 
 毎回新しいホストに対して手で設定してられないので、以下のシェルスクリプトを任意の場所に置いた上で、~/.zshenvでsshのエリアスを設定している。
 
@@ -40,6 +41,8 @@ ssh-copy-id $1 1>/dev/null 2>/dev/null; ssh $1
 alias ssh=~/sh/ssh-auto-login.sh
 ```
 
+
+
 ### 参考
 
 [Using an ssh-agent, or how to type your ssh password once, safely.](http://rabexc.org/posts/using-ssh-agent)
@@ -49,3 +52,7 @@ alias ssh=~/sh/ssh-auto-login.sh
 > 3. Start an `ssh-agent` to use on your machine, with eval `ssh-agent`.
 > 4. `ssh-add` your key, type your password once.
 > 5. Profit! You can now ssh to any host that has your public key without having to enter a password, and use `ssh -A` to forward your agent.
+
+[SSH Key - Still asking for password and passphrase](https://stackoverflow.com/questions/21095054/ssh-key-still-asking-for-password-and-passphrase)
+
+> `ssh-add -K /path/to/private_key`
