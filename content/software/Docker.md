@@ -7,6 +7,11 @@ title = "Docker"
 公式ドキュメントを最初に読むこと。
 https://docs.docker.com/
 
+学べること
+1. Dockerコンテナの基本的な使い方
+2. Docker Serviceの使い方
+3. Docker Swarmの使い方
+
 ## 各種確認コマンド
 
 * `docker ps` ... 現在動いているコンテナ情報を確認できる

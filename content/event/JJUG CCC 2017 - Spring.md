@@ -1,5 +1,5 @@
 +++
-title = "JJUG CCC 2017"
+title = "JJUG CCC 2017 - Spring"
 +++
 
 ## Java Libraries You Can't Afford to Miss
