@@ -35,3 +35,9 @@ CSVがSJISになっていて文字化けするので`iconv`で文字コード変
 ```sh
 iconv -f SJIS -t UTF-8 収入・支出詳細_2017* | grep 水道料金
 ```
+
+特定の項目を計算する
+
+```sh
+iconv -f SJIS -t UTF-8 収入・支出詳細_2017* | grep 水道| perl -F',' -alne '{print $F[3]}' | perl -pe 's/"//g; s/-/+/g; s/\n//g;' | perl -pe 's/^\+(.+)/$1\n/g' | bc
+```
