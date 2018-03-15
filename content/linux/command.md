@@ -13,6 +13,22 @@ $ ps -eo pid,cmd,lstart
 ...
 ```
 
+## カレントディレクトリ配下の複数ファイルの拡張子を一括置換したい
+
+以下の例は、拡張子を`heic`から`jpg`に変換するワンライナーである。
+`echo mv`とやると、ドライランで実行できる。表示を確認してから`echo`を外して実行すれば安全。 
+
+```sh
+$ for file in *.heic; do echo mv "$file" "${file%.heic}.jpg"; done
+mv IMG_0808.heic IMG_0808.jpg
+...
+
+--- 出力確認後、echoを外す ---
+$ for file in *.heic; do mv "$file" "${file%.heic}.jpg"; done
+```
+
+[参考ページ:mac os x terminal batch rename](https://stackoverflow.com/questions/24102974/mac-os-x-terminal-batch-rename)
+
 ### 参考
 
 [How to get the start time of a long-running Linux process?](https://stackoverflow.com/questions/5731234/how-to-get-the-start-time-of-a-long-running-linux-process)
