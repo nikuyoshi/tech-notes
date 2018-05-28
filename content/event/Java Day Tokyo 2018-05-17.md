@@ -1,5 +1,9 @@
 # Java Day Tokyo
 
+## 資料集
+
+http://www.oracle.com/technetwork/jp/ondemand/online2018-javaday-4489556-ja.html
+
 ## Java in a World of Containers
 
 jdepsを用いれば特定のモジュールが使用している依存関係を明らかにできる。
