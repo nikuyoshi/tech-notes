@@ -14,4 +14,9 @@ draft: false
 4. rebaseされたコミットがRemoteにあった場合、ローカルの変更履歴をstashするなりしてから`git branch -B master origin/master`のようにリモートブランチと同期を取る。
    * 参考: [How can I extract a predetermined range of lines from a text file on Unix?][1]
 
+## 困ったときに参考になるサイト
+
+[Gitでやらかした時に使える19個の奥義][2]
+
 [1]: https://stackoverflow.com/questions/83329/how-can-i-extract-a-predetermined-range-of-lines-from-a-text-file-on-unix
+[2]: https://qiita.com/muran001/items/dea2bbbaea1260098051
