@@ -14,6 +14,13 @@ draft: false
 4. rebaseされたコミットがRemoteにあった場合、ローカルの変更履歴をstashするなりしてから`git checkout -B master origin/master`のようにリモートブランチと同期を取る。
    * 参考: [How do I reset 'master' to 'origin/master'?][1]
 
+### localのmasterブランチに既にコミットしていて、`git pull`でリモートから取り込んだ時に余計なmergeコミットが発生した時
+
+1. `git reset --hard ORIG_HEAD`でマージ前に戻す
+2. `git fetch`
+3. `git rebase --i`で確認しながら操作する
+4. `git push origin master`
+
 ## Git Submoduleで管理していたリポジトリ名が変更されたとき
 
 下記の通りに一旦削除して、`git submodule add`してあげればOK。
