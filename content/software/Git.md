@@ -11,8 +11,8 @@ draft: false
 1. 修正したファイルがあれば、こまめにコミットする。
 2. ローカルにある程度コミットが溜まってきたら、`git rebase -i`でコミットをまとめる。RemoteにPushしたコミットでも、まとめたほうが良いものがあればrebaseして綺麗にしておく。
 3. 履歴をまとめる際、一般的に`git fetch; git merge --squash`の方が安全だが、どうせ個人でしか使わないので昔の履歴を追いやすい形にしておきたい。
-4. rebaseされたコミットがRemoteにあった場合、ローカルの変更履歴をstashするなりしてから`git branch -B master origin/master`のようにリモートブランチと同期を取る。
-   * 参考: [How can I extract a predetermined range of lines from a text file on Unix?][1]
+4. rebaseされたコミットがRemoteにあった場合、ローカルの変更履歴をstashするなりしてから`git checkout -B master origin/master`のようにリモートブランチと同期を取る。
+   * 参考: [How do I reset 'master' to 'origin/master'?][1]
 
 ## Git Submoduleで管理していたリポジトリ名が変更されたとき
 
@@ -37,6 +37,6 @@ draft: false
 
 [Gitでやらかした時に使える19個の奥義][2]
 
-[1]: https://stackoverflow.com/questions/83329/how-can-i-extract-a-predetermined-range-of-lines-from-a-text-file-on-unix
+[1]: https://superuser.com/questions/273172/how-do-i-reset-master-to-origin-master
 [2]: https://qiita.com/muran001/items/dea2bbbaea1260098051
 [3]: https://stackoverflow.com/questions/1260748/how-do-i-remove-a-submodule
