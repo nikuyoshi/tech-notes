@@ -29,6 +29,10 @@ by レッドハット　中島倫明さん
 
 ## LT
 
+### Ansible container in the kubernetes
+
+https://speakerdeck.com/nnao45/ansible-container-in-the-kubernetes
+
 ### Ansibleの学習環境をvSphereで作ってるお話
 
 https://speakerdeck.com/skyjoker/ansiblefalsexue-xi-huan-jing-wovspheretezuo-tuteruohua
