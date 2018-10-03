@@ -6,7 +6,7 @@ draft: true
 
 # AnsibleFest2018
 
-## State of Automation & Ansible Updates
+## State of Automation & Ansible Updates (1日目)
 
 ### Michelle Perz
 
@@ -269,6 +269,8 @@ apache_startservers:2
 
 ## Self-healing applications with Ansible
 
+https://www.slideshare.net/JrgenEtzlstorfer/selfhealing-applications-with-ansible
+
 * 自動復旧をするのにAnsible Towerを利用して実現した。
 * dynatraceで障害を検知して、復旧させる箇所でAnsibleを利用している
 * 自動復旧するアプリケーションを作るには？
@@ -348,4 +350,224 @@ LINEの事例。
 ## ASK THE EXPERT
 
 Ansible Roleのcommon roleについて聞いてみた。結論としては、common roleによせるべきタスクはタスクが2回以上使われるようなケースで、ケースバイケースなことが多いとのこと。
+
+## Automation Stories (2日目)
+
+### Richard and Chad Davis(DevOps Manager - Service Master)
+
+Richardさんの話が聞き取れず辛かった
+
+* レガシーなシステムを変えていった
+* Microservice、DevOpsに変更して戦略を変えた
+* 2時間かかっていたものがAnsible Playbookを使うことによって10分に短縮された
+* ChatOpsで自動化
+
+### Richard and Jason Cumings (Systems Engineer in US Bank)
+
+Richardさんの話が聞き取れず辛かった。
+
+* ビジネスにおいてDevOpsをする重要性は何か？
+  * レガシーなシステムを変えてスピードを出す必要があった
+* どのようにして技術的な革新を広めていったか
+  * 小さく始めた。
+  * Shell ScriptからChefに移行したが、コストがかかった。 Ansibleはモジュールがあるので学習コストが低く抑えられた
+* Kubernetesといったコンテナ基盤を使うにあたってAnsibleを使う？
+* 次に革新を起こそうとしていることは何か？
+
+## Ansible Best Practices: Roles & Modules
+
+by Tim Appnel (Senior Product Manager)
+一、二を争う良いセッションだった
+
+### Self-introduction
+
+Bank Americaの教育に携わっていた？
+
+### Ansible way
+
+* Ansibleはスイスアーミーナイフのように鋭く切れる武器である
+* Ansibleのジョブを作成するのに、RoleとModuleを使い分けること
+  * Roleはベストプラクティスに則って作成する。再利用性を重視。
+  * Moduleはツールである。
+
+### Best Practices
+
+#### Role
+
+* YAMLのシンタックスに則ること
+* Gitといったバージョンコントロールシステムで管理すること
+
+#### Role Design
+
+* 設定とアプリケーションの
+* Roleはクラス、オブジェクト、ライブラリじゃない。 依存はなるべくさけるとのこと。
+* Kepp Roles loosely-coupled
+* EXHIBIT AとEXHIBIT Bという具体例とを比較して、EXHIBIT Bの方が疎結合で出来上がっているので良いとの話をしていた。
+* モノリシックなRoleは避ける
+* `ansible-galaxy`コマンドを使ってRoleをインストールすること。`requirements.yml`を使って依存関係を定義する。
+  * 今のやりかたで良さそう！！
+* webserverのEXHIBIT A、EXHIBIT Bの例
+  * 適度にRole Variableを設定すること
+  * `defaults/main.yml`でデフォルトのVariableを適度に設定しておくこと
+* Roleのテストをするにはmoleculeを使うこと
+* ansible-lintを使っていくこと
+* commandモジュールをなるべく使わない
+  * 使うことが多いならモジュールを作成しよう！！
+
+#### Module
+
+* モノリシックな、何でもできるモジュールはよくない
+* 何度実行しても副作用のないように実装する
+* Fail fast - 失敗したらすぐに検知して失敗したことを報告する
+* 依存関係は最小にする
+* モジュールのインターフェースはアクションやコマンドパラメーターを避けること
+* パラメーターはスネークケースで、小文字。
+  * フラットな階層のパラメーターであること
+* よく使われるようなパラメーター名を使うこと 
+  * name
+  * state
+  * dest
+  * src
+  * path
+  * username
+  * password
+* モジュール実装で比較したいもの
+  * kubernetes
+    * モノリシック。Kubernetesの知識が必要
+  * ansible-kubernetes-modules
+    * 自動生成されたAPIマッピング
+  * k8s
+  * k8s_scale
+* モジュールが返答すべきこと  返り値に一貫性をもたせること
+* 参考になるいいモジュール
+  * sysctl
+    * ベストプラクティスに則ったモジュール。とても良い
+  * ping
+  * cron
+  * get_url
+* Developer Guideも参考になる
+  * https://docs.ansible.com/ansible/devel/dev_guide/
+
+## Simplifying playbooks
+
+by Jon Hawkesworth (Software Engineer at M*Modal Ltd)
+独自テクニック、例えばPlaybookをシンプルにするのにShellモジュールを使うなど、ベストプラクティスからほど遠い話で正直聞かなくても良いセッションだった。 ただし、リストからディクショナリい変換するやり方など、Ansibleでゴニョゴニョしなきゃならない箇所は参考になりそう。
+
+* 経歴
+  * サポートエンジニアから開発者へ
+* M*Modalについて
+  * 世界中にあるデータセンターを利用している。オンプレミス。 
+  * Windowsサーバーがほとんど。
+  * Dev、Data center、サポートチームがあり、たくさんの成熟したテクノロジーを利用している
+* `when:`は必要な時だけ使うべき。複雑になる。
+
+### プロビジョニングするものとアップデートするPlaybookを一つにすること
+
+* リストをディクショナリに変換するやり方
+
+## Developing Ansible Automation with the Galaxy Ecosystem Toolchain
+
+by Chris Houseknecht(Galaxy Engineering Manager at Red Hat)
+
+### Galaxy 2.0
+
+* EC2の上にホスティングされていた
+* GitHubに密結合
+
+### Galaxy 3.0
+
+* UIの改善
+* データモデルを改善し、ネームスペースが導入された
+* OpenShiftにホスティングされた
+* Mazer ... Ansibleのコンテンツマネージャー
+* 検索の精度があがり、キーワードにマッチするようになった。
+
+### Galaxy 3.1
+
+* ホストされたコンテンツ
+  * Checksum
+* コンテンツマネジメントがMazerでできるように
+* モジュールとプラグインも使えるように
+* 開発のワークフローができるように
+  * anisble-lintやmoleculeとの連携
+* 品質のスコアリングができるように
+* 解析ができるように
+
+### Galaxy 3.1 Hosted Content
+
+* GitHub、TravisCIを経由して成功したものをGalaxyがpullしてきた
+* 今までGitHubに依存してきたものを他のSCMでも代替できるようになった
+
+### ArtifactとBuildのデモ
+
+galaxy.ymlにキーワード
+
+`mazer build` を実行するとtar.gz ができあがる。メタデータがその中に含まれる。 その後、
+`mazer publish ./releases/foo.foo-0.0.1.tar.gz`を実行する
+
+* 個人で作ったRoleはpulpというコンテンツマネージャを使うと良いらしい
+  * https://github.com/pulp/pulp_ansible
+
+### Module & Plugins
+
+`ansible-galaxy init`で作成されたフォルダに、Pythonのモジュール(`/library`)などが追加される。
+`molecule init`でCollection？が作れるらしい
+
+### Ansible Contentのデモ
+
+https://galaxy-dev.ansible.com/
+
+##
+
+# Molecule
+
+* molecule init collection
+* molecule init role
+* molecule init scenario
+
+などそれぞれのコマンドを使い分けること
+
+### Mazerのデモ
+
+https://github.com/jctanner/MAZER_DEMO
+
+## Ansible + VSCode: Accelerate Ansible Playbooks
+
+* VSCodeの拡張の紹介。
+* 自動で補完してくれる
+* デフォルト設定で動かないのはなぜ？
+  * yaml拡張子をVSCodeのAnsible Pluginが認識できるような設定にしないとダメみたい。
+
+### Playbookをスクラッチで作るデモ
+
+### SSH経由でリモートのコンテナのマシンにAnsibleを実行するデモ
+
+## Managing RHEL with Ansible Roles
+
+by Trey Prinz (Account Solutions Architect at Red Hat)
+by Till Maas (Senior Software Engineer at Red Hat)
+
+### Overview of Ansible Roles
+
+* `ansible-galaxy init --init-path ./roles webserver` でRoleを作成する
+* `defaults`の変数は最も優先度が低い
+* `files`, `templates`ファイルはRoleによってデプロイされる。
+* `ansible-galaxy install `でRoleをインストールする
+
+### Overview of RHEL System Roles
+
+* NetworkのRoleがあり、Network Managerを設定している
+
+#### 目的
+
+* eth0のDHCP
+* WebBondのボンディング 
+
+#### ドキュメント
+
+https://linux-system-roles.github.io/
+
+## Closing Remarks & Toast
+
+by Tim Cramer
 
