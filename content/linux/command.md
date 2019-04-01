@@ -29,6 +29,12 @@ $ for file in *.heic; do mv "$file" "${file%.heic}.jpg"; done
 
 [参考ページ:mac os x terminal batch rename](https://stackoverflow.com/questions/24102974/mac-os-x-terminal-batch-rename)
 
+## mkdir した後にすぐに cd したい
+
+```
+mkdir hoge; cd $_
+```
+
 ### 参考
 
 [How to get the start time of a long-running Linux process?](https://stackoverflow.com/questions/5731234/how-to-get-the-start-time-of-a-long-running-linux-process)
