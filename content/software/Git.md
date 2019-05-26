@@ -38,7 +38,19 @@ draft: false
 3bis mv a/submodule_tmp a/submodule
 ```
 
-[How do I remove a submodule?][3]
+## 日本語ファイルの文字化け対応
+
+次のコマンドを実行すればOK。
+
+```sh
+git config --local core.quotepath false
+```
+
+環境全体に設定したい場合は、 `--global`オプションを忘れずに。
+
+```
+git config --global core.quotepath false
+```
 
 ## 困ったときに参考になるサイト
 
