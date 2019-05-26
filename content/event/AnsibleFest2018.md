@@ -517,9 +517,7 @@ galaxy.ymlにキーワード
 
 https://galaxy-dev.ansible.com/
 
-##
-
-# Molecule
+### Molecule
 
 * molecule init collection
 * molecule init role
