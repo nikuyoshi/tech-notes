@@ -52,6 +52,14 @@ git config --local core.quotepath false
 git config --global core.quotepath false
 ```
 
+## Gitの設定ができていなくて、間違えたEmail、名前が設定されたときに一括で変えるやり方
+
+```
+git filter-branch -f --env-filter "GIT_AUTHOR_NAME='Hiroki Uchida'; GIT_AUTHOR_EMAIL='nikuyoshi@gmail.com'; GIT_COMMITTER_NAME='Hiroki Uchida'; GIT_COMMITTER_EMAIL='nikuyoshi@gmail.com';" HEAD
+```
+
+[Git の Commit Author と Commiter を変更する - Qiita](https://qiita.com/sea_mountain/items/d70216a5bc16a88ed932)
+
 ## 困ったときに参考になるサイト
 
 [Gitでやらかした時に使える19個の奥義][2]
